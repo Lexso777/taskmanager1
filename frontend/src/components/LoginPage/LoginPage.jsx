@@ -31,7 +31,8 @@ const LoginPage = () => {
 
     return (
         <div className={style.loginPage__container}>
-            <div>{message}</div>
+            <div>
+            </div>
             <div className={style.login__module__window}>
                 <div className={style.module__window__buttons}>
                     <button 

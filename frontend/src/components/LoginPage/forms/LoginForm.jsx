@@ -24,8 +24,8 @@ const LoginForm = () => {
     return (
         <>
             <h2 className={style.h2}>Login</h2>
-            <form className={style.form}>
-                <input
+            {/* <form className={style.form}> */}
+                {/* <input
                     className={style.input}
                     type="email"
                     autoComplete="username"
@@ -66,8 +66,24 @@ const LoginForm = () => {
                 // onClick={() => counted()}
                 >
                     Login
-                </button>
-            </form>
+                </button> */}
+                        <h3>Add Product</h3>
+        <form method="POST" className={style.test}>
+            <div>
+            <label>Model</label>
+            <input type="text" name="model" />
+            </div>
+            <div>
+            <label>Company</label>
+            <input type="text" name="company" />
+            </div>
+            <div>
+            <label>Price</label>
+            <input type="number" name="price" />
+            </div>
+            <input type="submit" value="Send" />
+        </form>
+            {/* </form> */}
         </>
     );
 };
