@@ -68,7 +68,7 @@ const LoginForm = () => {
                     Login
                 </button> */}
                         <h3>Add Product</h3>
-        <form method="POST" className={style.test}>
+        <form method="POST" action="http://localhost:8080/create" className={style.test}>
             <div>
             <label>Model</label>
             <input type="text" name="model" />
