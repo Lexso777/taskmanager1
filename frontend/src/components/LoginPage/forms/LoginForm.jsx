@@ -27,16 +27,17 @@ const LoginForm = () => {
                     <label>Model</label>
                     <input type="text" name="model" />
                 </div>
-                <div>
-                    <label>Company</label>
-                    <input type="text" name="company" />
-                </div>
-                <div>
-                    <label>Price</label>
-                    <input type="number" name="price" />
-                </div>
-                <input type="submit" value="Send" />
-            </form> */}
+<<<<<<< HEAD
+                <label className={style.label}>
+                    <input type="checkbox" name="agree"></input>
+                    <span>Remember me</span>
+                </label>
+                <button
+                    className={style.button}
+                // onClick={() => counted()}
+                >
+                    Login
+                </button> */}
             <form method='POST' action="http://localhost:8080/create" className={style.form}>
                 <input
                     className={style.input}
