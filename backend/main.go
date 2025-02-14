@@ -66,12 +66,11 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
   }
 
   // Получаем значения из формы
-  model := r.FormValue("model")
-  company := r.FormValue("company")
-  price := r.FormValue("price")
+  email := r.FormValue("email")
+  password := r.FormValue("password")
 
   // Вставляем в базу данных
-  _, err = db.Exec("INSERT INTO users (model, company, price) VALUES ($1, $2, $3)", model, company, price)
+  _, err = db.Exec("INSERT INTO users (email, password) VALUES ($1, $2)", email, password)
   if err != nil {
    log.Println(err)
    http.Error(w, "Error inserting into database", http.StatusInternalServerError)
