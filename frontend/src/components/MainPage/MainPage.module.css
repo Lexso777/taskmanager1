@@ -1,0 +1,151 @@
+.body{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #6f32a6;
+  z-index: 0;
+}
+.nav__container{
+    height: 50px;
+    border: 1px solid #000;
+}
+.tasks__container{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px 0 40px;
+    z-index: 123;
+}
+.task__container{
+    height: auto;
+    width: 350px;
+    background-color: #ebecf0;
+    border-radius: 5px;
+    padding: 10px;
+}
+.button__add__task button{
+  width: 100px;
+  height: 35px;
+  color: #ffffff;
+  background-color: #2b2dd8de;
+  font-size: 14px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  border-radius: 10px;
+}
+.task__card{
+    width: 100%;
+    height: auto;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+    border: 1px solid;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.task__card__name{
+  font-size: 20px;
+}
+.task__card__description{
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+}
+.task__card__date{
+  width: 80px;
+  height: 35px;
+  border-radius: 15px;
+  background-color: #e7c70f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay {
+  position: fixed;  /* Остается на месте при прокрутке */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Затемнение */
+  z-index: 1000; /* Поверх всего */
+}
+.createTaskForm{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #000;
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  z-index: 1001;
+}
+.taskForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.task__form__title{
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.task__container__title{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0px 20px 10px 10px;
+  font-size: 16px;
+}
+.task__container__title__name{
+  padding-top: 10px;
+}
+.task__form__input{
+  border: 1px solid #000;
+  margin-top: 10px;
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+}
+.task__form__textarea{
+  border: 1px solid #000;
+  max-height: 350px;
+  width: 350px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-size: 18px;
+}
+.menu__container{
+  position: relative;
+  display: inline-block;
+}
+
+.menu__button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+}
+
+.menu div {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.menu div:hover {
+  background: #f0f0f0;
+}
+
+.menu-container:hover .menu {
+  display: block;
+}
