@@ -13,7 +13,7 @@ const MainPage = () => {
 
   const [toggleForm, setToggleForm] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [toggleText, setToggleText] = useState(false);
+  // const [toggleText, setToggleText] = useState(false);
 
   const toggle = () => {
     setToggleForm(!toggleForm);
@@ -21,9 +21,9 @@ const MainPage = () => {
   const toggle1 = () => {
     setToggleMenu(!toggleMenu);
   }
-  const toggle2 = () => {
-    
-  }
+  // const toggle2 = () => {
+
+  // }
 
 
 
