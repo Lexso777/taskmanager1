@@ -31,7 +31,6 @@ const LoginForm = () => {
                     <label>Model</label>
                     <input type="text" name="model" />
                 </div>
-<<<<<<< HEAD
                 <label className={style.label}>
                     <input type="checkbox" name="agree"></input>
                     <span>Remember me</span>
@@ -41,7 +40,7 @@ const LoginForm = () => {
                 // onClick={() => counted()}
                 >
                     Login
-                </button> */}
+                </button> 
                         <h3>Add Product</h3>
         <form method="POST" action="http://localhost:8080/create" className={style.test}>
             <div>
@@ -58,7 +57,6 @@ const LoginForm = () => {
             </div>
             <input type="submit" value="Send" />
         </form>
-=======
                 <div>
                     <label>Company</label>
                     <input type="text" name="company" />
@@ -69,7 +67,6 @@ const LoginForm = () => {
                 </div>
                 <input type="submit" value="Send" />
             </form>
->>>>>>> 91141a29e261eca3375bf9b746711495d5a4409a
             {/* </form> */}
         </>
     );
