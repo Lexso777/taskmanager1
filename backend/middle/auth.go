@@ -8,7 +8,9 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"time"
 
+	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -19,8 +21,35 @@ type Response struct {
 var DB *sql.DB
 
 type AuthRequest struct {
-	Email    string `json:"'email'"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
+}
+
+var jwtKey = []byte("sectet_key")
+
+type Claims struct {
+	UserID int `json:"id"`
+	jwt.RegisteredClaims
+}
+
+func GenerateToken(userID int) (string, error) {
+	expirationTime := time.Now().Add(24 * time.Hour)
+
+	claims := &Claims{
+		UserID: userID,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(expirationTime),
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+
+	tokenString, err := token.SignedString(jwtKey)
+	if err != nil {
+		return "", err
+	}
+
+	return tokenString, nil
 }
 
 func CreateHandler(w http.ResponseWriter, r *http.Request) {
@@ -53,7 +82,7 @@ func CreateHandler(w http.ResponseWriter, r *http.Request) {
 
 	_, err = DB.Exec(repository.SQLCreateUsers, data.Email, string(hashedPassword))
 	if err != nil {
-		http.Error(w, "Ошибка при создании пользователя", http.StatusInternalServerError)
+		http.Error(w, "error create user", http.StatusInternalServerError)
 		return
 	}
 	log.Printf("Email перед вставкой: %s", data.Email)
@@ -76,9 +105,14 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var hashedPassword string
-	err := DB.QueryRow(repository.SQLGetPassword, authReq.Email).Scan(&hashedPassword)
+	var userID int
+	err := DB.QueryRow(repository.SQLGetPassword, authReq.Email).Scan(&userID, &hashedPassword)
 	if err != nil {
-		http.Error(w, "Invalid email", http.StatusUnauthorized)
+		if err == sql.ErrNoRows {
+			http.Error(w, "Invalid email", http.StatusUnauthorized)
+		} else {
+			http.Error(w, "Invalid email", http.StatusUnauthorized)
+		}
 		return
 	}
 
@@ -87,11 +121,17 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Invalid password", http.StatusUnauthorized)
 		return
 	}
+	token, err := GenerateToken(userID)
+	if err != nil {
+		http.Error(w, "Failed generate Token", http.StatusInternalServerError)
+	}
+
+	w.WriteHeader(http.StatusOK)
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{
 		"message": "Login successful",
-		"email":   authReq.Email,
+		"token":   token,
 	})
 
 }
