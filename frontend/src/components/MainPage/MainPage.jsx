@@ -22,7 +22,7 @@ const MainPage = () => {
     setToggleMenu(!toggleMenu);
   }
   const toggle2 = () => {
-    
+    setToggleText(!toggleText)
   }
 
 
@@ -33,7 +33,7 @@ const MainPage = () => {
 
       const newTaskWithDate = {
         ...newTask,
-        date: new Date().toISOString(), 
+        date: new Date().toISOString(),
       };
 
       setTask([...task, newTaskWithDate]);
@@ -72,9 +72,24 @@ const MainPage = () => {
                     month: "short",
                   })}
                 </div>
-                <div className={style.task__card__text}>{task.text}</div>
-              </div>
+                {toggleText ? <div className={style.task__card__text}>{task.text}</div>:
+                  <div className={style.task__card__text}>
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 40 40"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      onClick={toggle2}
+                    >
+                      <rect x="5" y="10" width="30" height="3" fill="black" />
+                      <rect x="5" y="18" width="30" height="3" fill="black" />
+                      <rect x="5" y="26" width="30" height="3" fill="black" />
+                    </svg>
+                  </div>
+                }
 
+              </div>
             </div>
           ))}
           <div className={style.button__add__task}>
