@@ -78,12 +78,15 @@ const LoginForm = () => {
                     />
                 </div>
                 <div className={style.error}>{error}</div>
+
                 <label className={style.label}>
                     <input type="checkbox" name="agree" />
                     <span>Remember me</span>
                 </label>
                 <button className={style.button} type="submit">
                     Login
+
+
                 </button>
                 
             </form>
