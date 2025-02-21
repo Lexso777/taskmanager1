@@ -46,6 +46,8 @@ func main() {
 	http.HandleFunc("/login", middle.LoginHandler)
 	http.HandleFunc("/tasks", repository.GetTasks)
 	http.HandleFunc("/tasks/addtasks", repository.AddTask)
+	http.HandleFunc("/task/updtask", repository.UpdateTask)
+	http.HandleFunc("/task/statusupd", repository.UpdateStatus)
 
 	handlerWithCors := c.Handler(http.DefaultServeMux)
 

@@ -21,7 +21,7 @@ const (
 	INSERT INTO users(email, password) VALUES ($1,$2)
 	`
 	SQLGetPassword = `
-	SELECT password FROM users WHERE email=$1
+	SELECT id, password FROM users WHERE email=$1
 	`
 
 	SQLCreateTask = `
@@ -35,4 +35,12 @@ const (
 		status_task
 		FROM tasks
 		WHERE email =$1`
+
+	SQLUpdateTask = `UPDATE tasks SET title_task = $2, text_task = $3 WHERE email = $1 `
+
+	SQLUpdateStatus = `
+	UPDATE tasks SET status_task = status_task + 1 WHERE id = $1`
+
+	SQLdeleteTask = `
+	DELETE FROM tasks where id = $1`
 )
